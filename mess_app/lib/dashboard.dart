@@ -9,10 +9,6 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,7 +43,6 @@ class _DashboardState extends State<Dashboard> {
                 SizedBox(height: 30),
                 Column(
                   children: [
-
                     ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -60,7 +55,6 @@ class _DashboardState extends State<Dashboard> {
                       onPressed: () {
                         Navigator.pushNamed(context, '/messportal');
                       },
-
                       child: Row(
                         children: [
                           Padding(
@@ -70,7 +64,6 @@ class _DashboardState extends State<Dashboard> {
                               size: 35,
                               color: Colors.white,
                             ),
-
                           ),
                           SizedBox(
                             width: 40,
@@ -91,15 +84,12 @@ class _DashboardState extends State<Dashboard> {
                               color: Colors.white,
                             ),
                           )
-
-                         
                         ],
                       ),
                     ),
                     SizedBox(
                       height: 20,
                     ),
-
                     ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -116,14 +106,12 @@ class _DashboardState extends State<Dashboard> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(left: 15.0),
-
                             child: Icon(
                               Icons.people,
                               size: 35,
                               color: Colors.white,
                             ),
                           ),
-
                           SizedBox(
                             width: 30,
                           ),
@@ -143,15 +131,12 @@ class _DashboardState extends State<Dashboard> {
                               color: Colors.white,
                             ),
                           )
-
-
                         ],
                       ),
                     ),
                     SizedBox(
                       height: 20,
                     ),
-
                     ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
@@ -164,7 +149,6 @@ class _DashboardState extends State<Dashboard> {
                       onPressed: () {
                         Navigator.pushNamed(context, '/feedback');
                       },
-
                       child: Row(
                         children: [
                           Padding(
@@ -174,7 +158,6 @@ class _DashboardState extends State<Dashboard> {
                               size: 35,
                               color: Colors.white,
                             ),
-
                           ),
                           SizedBox(
                             width: 50,
@@ -195,7 +178,6 @@ class _DashboardState extends State<Dashboard> {
                               color: Colors.white,
                             ),
                           )
-
                         ],
                       ),
                     ),
