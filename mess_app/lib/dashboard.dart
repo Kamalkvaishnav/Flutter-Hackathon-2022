@@ -54,7 +54,9 @@ class _DashboardState extends State<Dashboard> {
                                   RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
                           ))),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/messportal');
+                      },
                       child: Row(
                         children: [
                           Padding(
@@ -99,7 +101,9 @@ class _DashboardState extends State<Dashboard> {
                                   RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
                           ))),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/traffic');
+                      },
                       child: Row(
                         children: [
                           Padding(
@@ -144,7 +148,9 @@ class _DashboardState extends State<Dashboard> {
                                   RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0),
                           ))),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/feedback');
+                      },
                       child: Row(
                         children: [
                           Padding(
