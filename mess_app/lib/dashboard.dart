@@ -9,6 +9,10 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,14 +47,20 @@ class _DashboardState extends State<Dashboard> {
                 SizedBox(height: 30),
                 Column(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.grey[800],
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(30),
-                          )),
-                      height: 50,
-                      width: 500,
+
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color.fromARGB(255, 53, 51, 51)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ))),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/messportal');
+                      },
+
                       child: Row(
                         children: [
                           Padding(
@@ -60,70 +70,101 @@ class _DashboardState extends State<Dashboard> {
                               size: 35,
                               color: Colors.white,
                             ),
-                          ), SizedBox(width: 40,),
-                           Text(
-                          'Mess Portal',
-                          style: GoogleFonts.lato(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
+
                           ),
-                        ),
-                         Padding(
-                          padding: const EdgeInsets.only(left: 50.0),
-                          child: Icon(Icons.arrow_forward, size: 30.0, color: Colors.white, ),
-                        )
+                          SizedBox(
+                            width: 40,
+                          ),
+                          Text(
+                            'Mess Portal',
+                            style: GoogleFonts.lato(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 50.0),
+                            child: Icon(
+                              Icons.arrow_forward,
+                              size: 30.0,
+                              color: Colors.white,
+                            ),
+                          )
+
+                         
                         ],
                       ),
                     ),
                     SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.grey[800],
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(30),
-                          )),
-                      height: 50,
-                      width: 500,
-                      child:  Row(
+
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color.fromARGB(255, 53, 51, 51)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ))),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/traffic');
+                      },
+                      child: Row(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
+                            padding: const EdgeInsets.only(left: 15.0),
+
                             child: Icon(
                               Icons.people,
                               size: 35,
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(width: 30,),
-                           Text(
-                          'Traffic in Mess',
-                          style: GoogleFonts.lato(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
+
+                          SizedBox(
+                            width: 30,
                           ),
-                        ),
-                         Padding(
-                          padding: const EdgeInsets.only(left: 40.0),
-                          child: Icon(Icons.arrow_forward, size: 30.0, color: Colors.white, ),
-                        )
+                          Text(
+                            'Traffic in Mess',
+                            style: GoogleFonts.lato(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 40.0),
+                            child: Icon(
+                              Icons.arrow_forward,
+                              size: 30.0,
+                              color: Colors.white,
+                            ),
+                          )
+
+
                         ],
                       ),
                     ),
                     SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.grey[800],
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(30),
-                          )),
-                      height: 50,
-                      width: 500,
+
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color.fromARGB(255, 53, 51, 51)),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ))),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/feedback');
+                      },
+
                       child: Row(
                         children: [
                           Padding(
@@ -133,19 +174,28 @@ class _DashboardState extends State<Dashboard> {
                               size: 35,
                               color: Colors.white,
                             ),
-                          ), SizedBox(width: 50,),
-                           Text(
-                          'Feedback',
-                          style: GoogleFonts.lato(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white,
+
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 60.0),
-                          child: Icon(Icons.arrow_forward, size: 30.0, color: Colors.white, ),
-                        )
+                          SizedBox(
+                            width: 50,
+                          ),
+                          Text(
+                            'Feedback',
+                            style: GoogleFonts.lato(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 60.0),
+                            child: Icon(
+                              Icons.arrow_forward,
+                              size: 30.0,
+                              color: Colors.white,
+                            ),
+                          )
+
                         ],
                       ),
                     ),
