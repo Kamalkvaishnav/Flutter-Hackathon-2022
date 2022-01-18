@@ -26,16 +26,16 @@ class _StudentProfileState extends State<StudentProfile> {
         profile_rollNo: value[1][3],
         // profile_url: value[1][4]
       ));
+      print(value);
       setState(() {
-        ;
+        isLoading = true;
       });
     });
-    print(profile);
   }
 
   @override
   Widget build(BuildContext context) {
-    return isLoading
+    return (!isLoading)
         ? Container(
             child: Center(
                 child: Text("Please Wait...",
@@ -55,7 +55,7 @@ class _StudentProfileState extends State<StudentProfile> {
                         child: Padding(
                           padding: const EdgeInsets.only(top: 30.0),
                           child: Text(
-                            'Hey, ' + profile[0].profile_name,
+                            'Hey, ' + profile[1].profile_name,
                             style: GoogleFonts.lato(
                                 color: Colors.white,
                                 fontSize: 25,
@@ -83,7 +83,7 @@ class _StudentProfileState extends State<StudentProfile> {
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
-                            profile[0].profile_name,
+                            profile[1].profile_name,
                             style: GoogleFonts.lato(
                                 color: Colors.white,
                                 fontSize: 25,
@@ -139,7 +139,7 @@ class _StudentProfileState extends State<StudentProfile> {
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
-                            profile[0].profile_rollNo,
+                            profile[1].profile_rollNo,
                             style: GoogleFonts.lato(
                                 color: Colors.white,
                                 fontSize: 25,
@@ -167,7 +167,7 @@ class _StudentProfileState extends State<StudentProfile> {
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
-                            profile[0].profile_email,
+                            profile[1].profile_email,
                             style: GoogleFonts.lato(
                                 color: Colors.white,
                                 fontSize: 25,
