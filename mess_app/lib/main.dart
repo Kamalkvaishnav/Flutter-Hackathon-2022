@@ -6,7 +6,6 @@ import 'package:mess_app/formMohini.dart';
 import 'package:mess_app/messPortal.dart';
 import 'package:mess_app/traffic.dart';
 import 'package:mess_app/feedbackform.dart';
-import 'package:mess_app/dashboard.dart';
 
 
 void main() {
@@ -18,7 +17,7 @@ void main() {
       '/traffic': (context) => const Traffic(),
       '/feedback': (context) => const FeedbackForm(),
       '/mohini': (context) => const FormMohini(),
-      '/jaiswalNew': (context) => const FormJaiswalNew(),
+      '/jaiswalNew': (context) => const FormJaiwalNew(),
       '/jaiswalOld': (context) => const FormJaiswalOld(),
     },
   ));
