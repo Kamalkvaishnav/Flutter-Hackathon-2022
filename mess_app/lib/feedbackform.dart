@@ -32,7 +32,7 @@ class _FeedbackFormState extends State<FeedbackForm> {
               'Select your mess:',
               style: GoogleFonts.lato(
                 fontSize: 20,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w700,
                 color: Colors.white,
               ),
             ),

@@ -1,5 +1,8 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mess_app/utilities/gsheets.dart';
+import 'package:mess_app/order/profileModel.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -9,185 +12,229 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  List<ProfileModel> profile = [ProfileModel()];
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    Gsheet sheet = Gsheet('1dFR1hus3VY2zryi8b2QD2FmY9dpqQdupwmLChyXRSdk');
+    sheet.readData("StudentDetails").then((value) {
+      profile.add(ProfileModel(
+        profile_id: value[1][0],
+        profile_name: value[1][1],
+        profile_email: value[1][2],
+        profile_rollNo: value[1][3],
+        // profile_url: value[1][4]
+      ));
+      print(value);
+      setState(() {
+        isLoading = true;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.grey[900],
-        body: Center(
-          child: Padding(
-            padding:
-                const EdgeInsets.only(left: 50, right: 50, bottom: 20, top: 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const CircleAvatar(
-                  radius: 70,
-                  backgroundImage: NetworkImage(
-                      'https://akm-img-a-in.tosshub.com/indiatoday/images/story/202103/photo-1511367461989-f85a21fda1_0_1200x768.jpeg?YVCV8xj2CmtZldc_tJAkykymqxE3fxNf&size=770:433'),
+      home: (!isLoading)
+          ? Center(
+              child: Text("Please Wait...",
+                  style: GoogleFonts.lato(
+                      color: Color.fromARGB(255, 148, 147, 147),
+                      fontSize: 30,
+                      fontWeight: FontWeight.w800)))
+          : Scaffold(
+              backgroundColor: Colors.grey[900],
+              body: Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                      left: 50, right: 50, bottom: 20, top: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const CircleAvatar(
+                        radius: 70,
+                        backgroundImage: NetworkImage(
+                            'https://akm-img-a-in.tosshub.com/indiatoday/images/story/202103/photo-1511367461989-f85a21fda1_0_1200x768.jpeg?YVCV8xj2CmtZldc_tJAkykymqxE3fxNf&size=770:433'),
+                      ),
+                      SizedBox(height: 10),
+                      Text(profile[1].profile_name,
+                          style: GoogleFonts.lato(
+                              color: Colors.white,
+                              fontSize: 24,
+                              fontWeight: FontWeight.w700)),
+                      SizedBox(height: 5),
+                      Text(profile[1].profile_email,
+                          style: GoogleFonts.lato(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              fontStyle: FontStyle.italic)),
+                      SizedBox(height: 30),
+                      Column(
+                        children: [
+                          SizedBox(
+                            width: 450,
+                            height: 50,
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Color.fromARGB(255, 53, 51, 51)),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                  ))),
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/messportal');
+                              },
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 20.0),
+                                    child: Icon(
+                                      Icons.food_bank,
+                                      size: 35,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Text(
+                                    'Mess Portal',
+                                    style: GoogleFonts.lato(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10.0),
+                                    child: Icon(
+                                      Icons.arrow_forward,
+                                      size: 30.0,
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          SizedBox(
+                            width: 450,
+                            height: 50,
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Color.fromARGB(255, 53, 51, 51)),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                  ))),
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/traffic');
+                              },
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 15.0),
+                                    child: Icon(
+                                      Icons.people,
+                                      size: 35,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    'Traffic in Mess',
+                                    style: GoogleFonts.lato(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10.0),
+                                    child: Icon(
+                                      Icons.arrow_forward,
+                                      size: 30.0,
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          SizedBox(
+                            width: 450,
+                            height: 50,
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Color.fromARGB(255, 53, 51, 51)),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                  ))),
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/feedback');
+                              },
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 20.0),
+                                    child: Icon(
+                                      Icons.feedback,
+                                      size: 35,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 30,
+                                  ),
+                                  Text(
+                                    'Feedback',
+                                    style: GoogleFonts.lato(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10.0),
+                                    child: Icon(
+                                      Icons.arrow_forward,
+                                      size: 30.0,
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
-                SizedBox(height: 10),
-                Text('Preetam',
-                    style: GoogleFonts.lato(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700)),
-                SizedBox(height: 5),
-                Text('preetam.iitgn.ac.in',
-                    style: GoogleFonts.lato(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        fontStyle: FontStyle.italic)),
-                SizedBox(height: 30),
-                Column(
-                  children: [
-                    ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Color.fromARGB(255, 53, 51, 51)),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ))),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/messportal');
-                      },
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Icon(
-                              Icons.food_bank,
-                              size: 35,
-                              color: Colors.white,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 40,
-                          ),
-                          Text(
-                            'Mess Portal',
-                            style: GoogleFonts.lato(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 50.0),
-                            child: Icon(
-                              Icons.arrow_forward,
-                              size: 30.0,
-                              color: Colors.white,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Color.fromARGB(255, 53, 51, 51)),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ))),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/traffic');
-                      },
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15.0),
-                            child: Icon(
-                              Icons.people,
-                              size: 35,
-                              color: Colors.white,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 30,
-                          ),
-                          Text(
-                            'Traffic in Mess',
-                            style: GoogleFonts.lato(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 40.0),
-                            child: Icon(
-                              Icons.arrow_forward,
-                              size: 30.0,
-                              color: Colors.white,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                              Color.fromARGB(255, 53, 51, 51)),
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ))),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/feedback');
-                      },
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20.0),
-                            child: Icon(
-                              Icons.feedback,
-                              size: 35,
-                              color: Colors.white,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 50,
-                          ),
-                          Text(
-                            'Feedback',
-                            style: GoogleFonts.lato(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 60.0),
-                            child: Icon(
-                              Icons.arrow_forward,
-                              size: 30.0,
-                              color: Colors.white,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                )
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
     );
     ;
   }

@@ -3,14 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
-class FormMohini extends StatefulWidget {
-  const FormMohini({Key? key}) : super(key: key);
+class FormJaiwalNew extends StatefulWidget {
+  const FormJaiwalNew({Key? key}) : super(key: key);
 
   @override
-  State<FormMohini> createState() => _FormMohiniState();
+  State<FormJaiwalNew> createState() => _FormJaiwalNewState();
 }
 
-class _FormMohiniState extends State<FormMohini> {
+class _FormJaiwalNewState extends State<FormJaiwalNew> {
   final formKey = GlobalKey<FormState>();
 
   String favDish = '';
