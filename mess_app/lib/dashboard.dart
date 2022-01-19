@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mess_app/loading.dart';
 import 'package:mess_app/utilities/gsheets.dart';
 import 'package:mess_app/order/profileModel.dart';
 
@@ -25,7 +26,7 @@ class _DashboardState extends State<Dashboard> {
         profile_name: value[1][1],
         profile_email: value[1][2],
         profile_rollNo: value[1][3],
-        // profile_url: value[1][4]
+        profile_url: value[1][4],
       ));
       print(value);
       setState(() {
@@ -38,12 +39,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: (!isLoading)
-          ? Center(
-              child: Text("Please Wait...",
-                  style: GoogleFonts.lato(
-                      color: Color.fromARGB(255, 148, 147, 147),
-                      fontSize: 30,
-                      fontWeight: FontWeight.w800)))
+          ? const Loading()
           : Scaffold(
               backgroundColor: Colors.grey[900],
               body: Center(
@@ -54,11 +50,10 @@ class _DashboardState extends State<Dashboard> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const CircleAvatar(
+                       CircleAvatar(
                         radius: 70,
                         backgroundImage: NetworkImage(
-                            'https://akm-img-a-in.tosshub.com/indiatoday/images/story/202103/photo-1511367461989-f85a21fda1_0_1200x768.jpeg?YVCV8xj2CmtZldc_tJAkykymqxE3fxNf&size=770:433'),
-                      ),
+                            profile[1].profile_url)),
                       SizedBox(height: 10),
                       Text(profile[1].profile_name,
                           style: GoogleFonts.lato(

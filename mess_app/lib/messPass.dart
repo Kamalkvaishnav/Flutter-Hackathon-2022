@@ -1,7 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mess_app/loading.dart';
 import 'package:mess_app/utilities/gsheets.dart';
 import 'package:mess_app/order/passModel.dart';
+import 'package:image_picker/image_picker.dart';
 
 class MessPass extends StatefulWidget {
   const MessPass({Key? key}) : super(key: key);
@@ -13,6 +17,16 @@ class MessPass extends StatefulWidget {
 class _MessPassState extends State<MessPass> {
   bool isLoading = false;
   List<PassModel> pass = [PassModel()];
+  File? _image;
+  ImagePicker picker = ImagePicker();
+
+  Future getImage() async {
+    final image = await picker.pickImage(source: ImageSource.camera);
+
+    setState(() {
+      final _image = image as File;
+    });
+  }
 
   @override
   void initState() {
@@ -33,13 +47,7 @@ class _MessPassState extends State<MessPass> {
   @override
   Widget build(BuildContext context) {
     return !isLoading
-        ? Container(
-            child: Center(
-                child: Text("Please Wait...",
-                    style: GoogleFonts.lato(
-                        color: Color.fromARGB(255, 148, 147, 147),
-                        fontSize: 30,
-                        fontWeight: FontWeight.w700))))
+        ? Loading()
         : Container(
             child: Column(
               children: [
@@ -74,9 +82,11 @@ class _MessPassState extends State<MessPass> {
                       color: Colors.grey[400]),
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Image(
-                      image: NetworkImage(pass[1].qr_code),
-                    ),
+                    child: (_image == null)
+                        ? Container(
+                            child: Center(child: Text("No Image")),
+                          )
+                        : Image.file(_image!),
                   ),
                 ),
                 SizedBox(
@@ -96,7 +106,7 @@ class _MessPassState extends State<MessPass> {
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Text(
-                            'Pass_ID: '+ pass[1].pass_id,
+                            'Pass_ID: ' + pass[1].pass_id,
                             style: GoogleFonts.lato(
                                 color: Colors.white,
                                 fontSize: 25,
@@ -106,7 +116,22 @@ class _MessPassState extends State<MessPass> {
                       ),
                     ],
                   ),
-                )
+                ),
+                ElevatedButton(
+                  onPressed: getImage,
+                  child: Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        "Upload",
+                        style: GoogleFonts.lato(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           );

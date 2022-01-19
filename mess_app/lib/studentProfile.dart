@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mess_app/loading.dart';
 import 'package:mess_app/order/profileModel.dart';
 import 'package:mess_app/utilities/gsheets.dart';
 
@@ -36,13 +37,7 @@ class _StudentProfileState extends State<StudentProfile> {
   @override
   Widget build(BuildContext context) {
     return (!isLoading)
-        ? Container(
-            child: Center(
-                child: Text("Please Wait...",
-                    style: GoogleFonts.lato(
-                        color: Color.fromARGB(255, 148, 147, 147),
-                        fontSize: 30,
-                        fontWeight: FontWeight.w700))))
+        ? const Loading()
         : Container(
             child: Column(
               children: [
