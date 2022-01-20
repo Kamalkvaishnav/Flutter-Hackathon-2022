@@ -14,10 +14,11 @@ class _FormMohiniState extends State<FormMohini> {
   final formKey = GlobalKey<FormState>();
 
   String favDish = '';
-  String hygiene = '';
-  String messStaff = '';
-  String foodrating = '';
   String other = '';
+
+  String messStaff = '';
+  late double foodrating;
+  late double hygiene;
 
   Widget _buildFavDish() {
     return TextFormField(
@@ -39,7 +40,7 @@ class _FormMohiniState extends State<FormMohini> {
         size: 40,
         color: Colors.yellowAccent,
         borderColor: Colors.grey,
-        onRated: (value) => setState(() => foodrating = value as String));
+        onRated: (value) => setState(() => foodrating = value as double));
   }
 
   Widget _buildHygiene() {
@@ -49,7 +50,7 @@ class _FormMohiniState extends State<FormMohini> {
       size: 40,
       color: Colors.yellowAccent,
       borderColor: Colors.grey,
-      onRated: (value) => setState(() => hygiene = value as String),
+      onRated: (value) => setState(() => hygiene = value as double),
     );
   }
 

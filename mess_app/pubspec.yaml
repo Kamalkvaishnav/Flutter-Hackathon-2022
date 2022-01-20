@@ -40,6 +40,10 @@ dependencies:
   bottom_navy_bar: ^6.0.0
   flutter_spinkit: ^5.1.0
   image_picker: ^0.8.4+4
+  get: ^4.6.1
+  path_provider: ^2.0.8
+  razorpay_flutter: ^1.2.9
+  toast: ^0.1.5
 
 dev_dependencies:
   flutter_test:
