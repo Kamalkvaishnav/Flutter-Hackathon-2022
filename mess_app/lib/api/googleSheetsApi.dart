@@ -34,7 +34,7 @@ class googleSheetsAPI
       
       // _userSheet!.values.insertRow(1, first_row);
       // _trafficSheet!.values.insertRow(1, traffic_first_row);
-       _feedBackSheet!.values.insertRow(1, first_row);
+       _feedBackSheet.values.insertRow(1, first_row);
     } catch(e) {
       print(e);
     }
@@ -61,6 +61,6 @@ class googleSheetsAPI
 
     static Future insert(List<Map<String,dynamic>> rowList) async
     {
-      _feedBackSheet!.values.map.appendRows(rowList);
+      _feedBackSheet.values.map.appendRows(rowList);
     }
 }
