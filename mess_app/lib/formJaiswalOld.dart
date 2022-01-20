@@ -15,10 +15,11 @@ class _FormJaiswalOldState extends State<FormJaiswalOld> {
   final formKey = GlobalKey<FormState>();
 
   String favDish = '';
-  String hygiene = '';
-  String messStaff = '';
-  String foodrating = '';
   String other = '';
+
+  String messStaff = '';
+  late double foodrating;
+  late double hygiene;
 
   Widget _buildFavDish() {
     return TextFormField(
@@ -40,7 +41,9 @@ class _FormJaiswalOldState extends State<FormJaiswalOld> {
         size: 40,
         color: Colors.yellowAccent,
         borderColor: Colors.grey,
+
         onRated: (value) => setState(() => foodrating = value.toString()));
+
   }
 
   Widget _buildHygiene() {
@@ -50,7 +53,10 @@ class _FormJaiswalOldState extends State<FormJaiswalOld> {
       size: 40,
       color: Colors.yellowAccent,
       borderColor: Colors.grey,
+
       onRated: (value) => setState(() => hygiene = value.toString()),
+
+     
     );
   }
 
