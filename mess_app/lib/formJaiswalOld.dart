@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:smooth_star_rating/smooth_star_rating.dart';
-
+import 'package:mess_app/api/googleSheetsApi.dart';
+import 'package:mess_app/models/feedformModel.dart';
 class FormJaiswalOld extends StatefulWidget {
   const FormJaiswalOld({Key? key}) : super(key: key);
 
@@ -29,7 +30,7 @@ class _FormJaiswalOldState extends State<FormJaiswalOld> {
         }
         return null;
       }),
-      onSaved: (value) => setState(() => favDish = value!),
+      onSaved: (value) => setState(() => favDish = value!.toString()),
     );
   }
 
@@ -40,7 +41,9 @@ class _FormJaiswalOldState extends State<FormJaiswalOld> {
         size: 40,
         color: Colors.yellowAccent,
         borderColor: Colors.grey,
-        onRated: (value) => setState(() => foodrating = value as double));
+
+        onRated: (value) => setState(() => foodrating = value.toString()));
+
   }
 
   Widget _buildHygiene() {
@@ -50,7 +53,10 @@ class _FormJaiswalOldState extends State<FormJaiswalOld> {
       size: 40,
       color: Colors.yellowAccent,
       borderColor: Colors.grey,
-      onRated: (value) => setState(() => hygiene = value as double),
+
+      onRated: (value) => setState(() => hygiene = value.toString()),
+
+     
     );
   }
 
@@ -63,7 +69,7 @@ class _FormJaiswalOldState extends State<FormJaiswalOld> {
         }
         return null;
       }),
-      onSaved: (value) => setState(() => messStaff = value!),
+      onSaved: (value) => setState(() => messStaff = value!.toString()),
     );
   }
 
@@ -76,7 +82,7 @@ class _FormJaiswalOldState extends State<FormJaiswalOld> {
         }
         return null;
       }),
-      onSaved: (value) => setState(() => other = value!),
+      onSaved: (value) => setState(() => other = value!.toString()),
     );
   }
 
@@ -86,7 +92,7 @@ class _FormJaiswalOldState extends State<FormJaiswalOld> {
         backgroundColor: Colors.grey[900],
         appBar: AppBar(
           title: Text(
-            'New Jaiswal mess',
+            'Old Jaiswal mess',
             style: GoogleFonts.lato(
               fontSize: 20.0,
               fontWeight: FontWeight.w500,
@@ -96,6 +102,7 @@ class _FormJaiswalOldState extends State<FormJaiswalOld> {
           backgroundColor: Colors.grey[800],
         ),
         body: Form(
+           key:formKey,
             child: Container(
                 margin: EdgeInsets.all(24),
                 child: Column(
@@ -162,7 +169,18 @@ class _FormJaiswalOldState extends State<FormJaiswalOld> {
                     ),
                     ElevatedButton(
                       onPressed: () {
+                        formKey.currentState?.save();
                         Navigator.pushNamed(context, '/feedback');
+                        
+                        final feedback_row={
+                          feedbackFeilds.favDish:favDish,
+                          feedbackFeilds.foodrating:foodrating,
+                          feedbackFeilds.hygeine:hygiene,
+                          feedbackFeilds.messStaff:messStaff,
+                          feedbackFeilds.other:other
+
+                        };
+                        googleSheetsAPI.insert([feedback_row]);
                       },
                       child: Text(
                         'Submit',
