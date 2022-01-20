@@ -6,9 +6,10 @@ import 'package:mess_app/formMohini.dart';
 import 'package:mess_app/messPortal.dart';
 import 'package:mess_app/traffic.dart';
 import 'package:mess_app/feedbackform.dart';
+import 'package:mess_app/api/googleSheetsApi.dart';
 
-
-void main() {
+Future<void> main() async {
+  googleSheetsAPI.init();
   runApp(MaterialApp(
     initialRoute: '/',
     routes: {
