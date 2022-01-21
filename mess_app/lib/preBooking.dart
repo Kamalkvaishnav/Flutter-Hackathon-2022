@@ -52,42 +52,53 @@ class _PreBookingState extends State<PreBooking> {
     print('Payment Success');
 
     Toast.show('Payment Success', context, duration: Toast.LENGTH_LONG);
-    Navigator.pushNamed(context, '/messportal');
+    Navigator.pushNamed(context, '/prebooking');
   }
 
   void handlerErrorFailure(PaymentFailureResponse) {
     print('Payment Failed');
     Toast.show('Payment Failed', context, duration: Toast.LENGTH_LONG);
-    Navigator.pushNamed(context, '/messportal');
+    Navigator.pushNamed(context, '/prebooking');
   }
 
   void handlerExternalWallet(ExternalWalletResponse) {
     print('External Wallet');
     Toast.show('External wallet', context, duration: Toast.LENGTH_LONG);
-    Navigator.pushNamed(context, '/messportal');
+    Navigator.pushNamed(context, '/prebooking');
   }
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            child: Text(
-              'Chiken Biryani',
-              style: GoogleFonts.lato(
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
-                color: Color.fromRGBO(255, 255, 255, 1),
+      child: Container(
+        color: Color.fromARGB(255, 125, 255, 120),
+        height: 300,
+        width: 200,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              child: Text(
+                'Chiken Biryani',
+                style: GoogleFonts.lato(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                  color: Color.fromARGB(255, 3, 3, 3),
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 15),
-          ElevatedButton(
-              onPressed: openCheckOut, child: Text("Pay 60, and book Now"))
-        ],
+            SizedBox(height: 15),
+            ElevatedButton(
+                onPressed: openCheckOut, child: Text("Pay With RazorPay")),
+            SizedBox(height: 15),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/upi');
+                },
+                child: Text("Pay With UPI"))
+          ],
+        ),
       ),
     );
   }

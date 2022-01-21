@@ -6,6 +6,7 @@ import 'package:mess_app/pay.dart';
 import 'package:mess_app/studentProfile.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:mess_app/preBooking.dart';
+import 'package:mess_app/upi.dart';
 
 class MessPortal extends StatefulWidget {
   const MessPortal({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class _MessPortalState extends State<MessPortal> {
     const StudentProfile(),
     const MessPass(),
     const MessDetails(),
-    const PreBooking()
+    const PreBooking(),
   ];
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mess_app/splash.dart';
 import 'package:mess_app/loading.dart';
 import 'package:mess_app/utilities/gsheets.dart';
 import 'package:mess_app/order/profileModel.dart';
@@ -39,7 +40,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: (!isLoading)
-            ? const Loading()
+            ? const FirstLoading()
             : Scaffold(
                 body: Container(
                   height: MediaQuery.of(context).size.height,
@@ -58,12 +59,12 @@ class _DashboardState extends State<Dashboard> {
                                   fit: BoxFit.fitWidth,
                                 ),
                                 borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(40),
-                                    bottomRight: Radius.circular(40))),
+                                    bottomLeft: Radius.circular(20),
+                                    bottomRight: Radius.circular(20))),
                           ),
                           Positioned(
-                            bottom: -71,
-                            left: 116,
+                            bottom: -72.5,
+                            left: 115.25,
                             child: Container(
                               padding: EdgeInsets.all(4),
                               decoration: BoxDecoration(
@@ -72,8 +73,8 @@ class _DashboardState extends State<Dashboard> {
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.blue,
-                                    blurRadius: 6,
-                                    spreadRadius: 0.5,
+                                    blurRadius: 2,
+                                    spreadRadius: 0.1,
                                   ),
                                 ],
                               ),
@@ -94,7 +95,7 @@ class _DashboardState extends State<Dashboard> {
                         children: [
                           Text(
                             "Hey! ",
-                            style: TextStyle(
+                            style: GoogleFonts.lato(
                               fontSize: 35,
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
@@ -102,10 +103,10 @@ class _DashboardState extends State<Dashboard> {
                           ),
                           Text(
                             profile[1].profile_name,
-                            style: TextStyle(
+                            style: GoogleFonts.lato(
                               fontSize: 35,
                               fontWeight: FontWeight.bold,
-                              color: Colors.blue,
+                              color: Color.fromARGB(255, 40, 158, 255),
                             ),
                           ),
                         ],
@@ -113,7 +114,7 @@ class _DashboardState extends State<Dashboard> {
                       SizedBox(height: 2),
                       Text(
                         profile[1].profile_email,
-                        style: TextStyle(
+                        style: GoogleFonts.lato(
                           fontSize: 15,
                           color: Colors.blue,
                           letterSpacing: 2,
@@ -157,6 +158,15 @@ class _DashboardState extends State<Dashboard> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Container(
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.blue,
+                                        blurRadius: 3,
+                                        spreadRadius: 0.1,
+                                      ),
+                                    ],
+                                  ),
                                   height: 40,
                                   width:
                                       MediaQuery.of(context).size.width * 0.35,
@@ -170,7 +180,7 @@ class _DashboardState extends State<Dashboard> {
                                         primary: Colors.white),
                                     child: Text(
                                       'Mess Portal',
-                                      style: TextStyle(
+                                      style: GoogleFonts.lato(
                                         fontSize: 16,
                                         color: Colors.blue,
                                         fontWeight: FontWeight.bold,
@@ -183,6 +193,15 @@ class _DashboardState extends State<Dashboard> {
                                   ),
                                 ),
                                 Container(
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.blue,
+                                        blurRadius: 3,
+                                        spreadRadius: 0.1,
+                                      ),
+                                    ],
+                                  ),
                                   height: 40,
                                   width:
                                       MediaQuery.of(context).size.width * 0.35,
@@ -196,7 +215,7 @@ class _DashboardState extends State<Dashboard> {
                                         primary: Colors.white),
                                     child: Text(
                                       'Mess Traffic',
-                                      style: TextStyle(
+                                      style: GoogleFonts.lato(
                                         fontSize: 16,
                                         color: Colors.blue,
                                         fontWeight: FontWeight.bold,
@@ -225,10 +244,11 @@ class _DashboardState extends State<Dashboard> {
                               ),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30)),
-                              primary: Colors.white),
+                              primary: Colors.white,
+                              shadowColor: Colors.blue),
                           child: Text(
                             'Feedback',
-                            style: TextStyle(
+                            style: GoogleFonts.lato(
                               fontSize: 17,
                               color: Colors.blue,
                               fontWeight: FontWeight.bold,
