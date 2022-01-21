@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:toast/toast.dart';
@@ -47,19 +48,23 @@ class _PreBookingState extends State<PreBooking> {
     }
   }
 
-  void handlerPaymentSuccess() {
+  void handlerPaymentSuccess(PaymentSuccessResponse) {
     print('Payment Success');
+
     Toast.show('Payment Success', context, duration: Toast.LENGTH_LONG);
+    Navigator.pushNamed(context, '/messportal');
   }
 
-  void handlerErrorFailure() {
+  void handlerErrorFailure(PaymentFailureResponse) {
     print('Payment Failed');
     Toast.show('Payment Failed', context, duration: Toast.LENGTH_LONG);
+    Navigator.pushNamed(context, '/messportal');
   }
 
-  void handlerExternalWallet() {
+  void handlerExternalWallet(ExternalWalletResponse) {
     print('External Wallet');
     Toast.show('External wallet', context, duration: Toast.LENGTH_LONG);
+    Navigator.pushNamed(context, '/messportal');
   }
 
   @override

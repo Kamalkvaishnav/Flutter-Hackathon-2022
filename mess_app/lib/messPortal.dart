@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mess_app/messDetails.dart';
 import 'package:mess_app/messPass.dart';
+import 'package:mess_app/pay.dart';
 import 'package:mess_app/studentProfile.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:mess_app/preBooking.dart';

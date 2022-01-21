@@ -41,8 +41,7 @@ class _FormJaiswalOldState extends State<FormJaiswalOld> {
         size: 40,
         color: Colors.yellowAccent,
         borderColor: Colors.grey,
-
-        onRated: (value) => setState(() => foodrating = value.toString()));
+        onRated: (value) => setState(() => foodrating = value));
 
   }
 
@@ -53,8 +52,7 @@ class _FormJaiswalOldState extends State<FormJaiswalOld> {
       size: 40,
       color: Colors.yellowAccent,
       borderColor: Colors.grey,
-
-      onRated: (value) => setState(() => hygiene = value.toString()),
+      onRated: (value) => setState(() => hygiene = value),
 
      
     );
