@@ -71,7 +71,7 @@ class _PreBookingState extends State<PreBooking> {
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: AppBar(
-        
+
       //   title: const Text('   Mess Portal'),
       //   actions: <Widget>[
       //     IconButton(
@@ -81,209 +81,190 @@ class _PreBookingState extends State<PreBooking> {
       //         ScaffoldMessenger.of(context).showSnackBar(
       //             const SnackBar(content: Text('This is a snackbar')));
       //       },
-      //     ),  
+      //     ),
       //   ],
       // ),
-      
-      body : Stack(
-        children: 
-          [Container(
-            height: MediaQuery.of(context).size.height *0.45, 
-            decoration: BoxDecoration (
-              borderRadius:BorderRadius.circular(40.0),
-              image : DecorationImage(            
-                image: AssetImage("assets/biryani.jpg"),
-                fit : BoxFit.cover,
-                
-                alignment: Alignment.topLeft,
-                
-              ),
-            ),
-          ),
-             Column( 
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [ 
-                Container(
-                  height: MediaQuery.of(context).size.height *0.6,
-                  width: MediaQuery.of(context).size.width,
-                  //color: Colors.white,
-                  decoration: BoxDecoration(
-                    color : Colors.white,
-                    shape : BoxShape.rectangle,
-                   borderRadius: new BorderRadius.only(
-                    topLeft: const Radius.circular(50.0),
-                    topRight: const Radius.circular(50.0),
-                  ),
-                    // boxShadow: [
-                    //   BoxShadow( 
-                    //     color : Colors.blue,
-                    //     blurRadius: 6,
-                    //     spreadRadius: 3,
-                    //   ),
-                    // ],
-                  ),
-      
-                  child : Column( 
-                    children: [
-                      SizedBox(height : 25),
-                      Row(
-                        // mainAxisAlignment: MainAxisAlignment.,
-                        children: 
-                          [Text(
-                            "    Chicken Biryani",
-                            style: TextStyle(
-                              fontSize: 30,
-                              color : Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20,),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: 
-                          [Text(
-                            
-                            "Rs. 120   ",
-                            style: TextStyle(
-                              fontSize: 30,
-                              color : Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 30,),
-                       Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: 
-                          [Text(
-                            "  Confirm your chicken meal ! ",
-                            style: TextStyle(
-                              fontSize: 20,
-                              color : Colors.black,
-                              //fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    SizedBox(height: 20),
-                     Row(
-                       // mainAxisAlignment: MainAxisAlignment,
-                        children: 
-                          [Text(
-                            "   . Payment Method",
-                            style: TextStyle(
-                              fontSize: 24,
-                              color : Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    SizedBox(height: 40),
 
-                     
-                   
-                      Container(
-                        height : 50,
-                        width :MediaQuery.of(context).size.width*0.7,
-                        //color: Colors.yellow,
-                        child :ElevatedButton(
-                          style :ElevatedButton.styleFrom(
-                            side: BorderSide(
-                              width: 2.0,
-                              color: Colors.blue,
-                            ),
-                            shape: RoundedRectangleBorder( 
-                              borderRadius: BorderRadius.circular(30)
-                            ),
-                            primary: Colors.white
-                          ),
-                         child : Row(
-                           
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-      
-            Text(
-              '',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-                color: Colors.blue,
+      body: Stack(
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height * 0.45,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              image: DecorationImage(
+                image: AssetImage("assets/biryani.jpg"),
+                fit: BoxFit.cover,
+                alignment: Alignment.topLeft,
               ),
             ),
-            // ImageIcon(
-            //   AssetImage("Images/upi.png"),
-            //   size : 20,
-            // )
-            Image.asset(
-                "assets/upi.png"
-            ),
-          ],
           ),
-                          
-                          onPressed: () {
-                  Navigator.pushNamed(context, '/upi');
-                },
-                        ),
-                       
-                      ),
-SizedBox(height: 40),
-                      Container(
-                        height : 50,
-                        width :MediaQuery.of(context).size.width*0.7,
-                        //color: Colors.yellow,
-                        child :ElevatedButton(
-                          style :ElevatedButton.styleFrom(
-                            side: BorderSide(
-                              width: 2.0,
-                              color: Colors.blue,
-                            ),
-                            shape: RoundedRectangleBorder( 
-                              borderRadius: BorderRadius.circular(30)
-                            ),
-                            primary: Colors.white
-                          ),
-                         child : Row(
-                           
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-      
-            Text(
-              '',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-                color: Colors.blue,
-              ),
-            ),
-            // ImageIcon(
-            //   AssetImage("Images/upi.png"),
-            //   size : 20,
-            // )
-            Image.asset(
-                "assets/razor.png",
-            ),
-          ],
-          ),
-                          
-                         onPressed: openCheckOut,
-                        ),
-                       
-                      ),
-      
-                    ],
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.5,
+                width: MediaQuery.of(context).size.width,
+                //color: Colors.white,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.rectangle,
+                  borderRadius: new BorderRadius.only(
+                    topLeft: const Radius.circular(70.0),
+                    topRight: const Radius.circular(70.0),
                   ),
-                    
-                 ),
-              ],
-             ),  
+                  // boxShadow: [
+                  //   BoxShadow(
+                  //     color : Colors.blue,
+                  //     blurRadius: 6,
+                  //     spreadRadius: 3,
+                  //   ),
+                  // ],
+                ),
+
+                child: Column(
+                  children: [
+                    SizedBox(height: 25),
+                    Row(
+                      // mainAxisAlignment: MainAxisAlignment.,
+                      children: [
+                        Text(
+                          "    Chicken Biryani",
+                          style: GoogleFonts.lato(
+                            fontSize: 35,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          "Rs. 120   ",
+                          style: GoogleFonts.lato(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "  Confirm your chicken meal ! ",
+                          style: GoogleFonts.lato(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Row(
+                      // mainAxisAlignment: MainAxisAlignment,
+                      children: [
+                        Text(
+                          "       Payment Method",
+                          style: GoogleFonts.lato(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 40),
+                    Container(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      //color: Colors.yellow,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            side: BorderSide(
+                              width: 2.0,
+                              color: Colors.blue,
+                            ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30)),
+                            primary: Colors.white),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              '',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.blue,
+                              ),
+                            ),
+                            // ImageIcon(
+                            //   AssetImage("Images/upi.png"),
+                            //   size : 20,
+                            // )
+                            Image.asset("assets/upi.png"),
+                          ],
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/upi');
+                        },
+                      ),
+                    ),
+                    SizedBox(height: 40),
+                    Container(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width * 0.7,
+                      //color: Colors.yellow,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            side: BorderSide(
+                              width: 2.0,
+                              color: Colors.blue,
+                            ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30)),
+                            primary: Colors.white),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              '',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.blue,
+                              ),
+                            ),
+                            // ImageIcon(
+                            //   AssetImage("Images/upi.png"),
+                            //   size : 20,
+                            // )
+                            Image.asset(
+                              "assets/razor.png",
+                            ),
+                          ],
+                        ),
+                        onPressed: openCheckOut,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ],
       ),
-      
     );
   }
 }
