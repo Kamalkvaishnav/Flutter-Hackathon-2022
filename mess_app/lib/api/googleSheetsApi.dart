@@ -1,9 +1,9 @@
 import 'package:gsheets/gsheets.dart';
-import 'package:mess_app/feedbackform.dart';
+import 'package:mess_app/feedback.dart';
 import 'package:mess_app/models/feedformModel.dart';
-class googleSheetsAPI
-{
-  static const _credentials=r'''
+
+class googleSheetsAPI {
+  static const _credentials = r'''
   {
   "type": "service_account",
   "project_id": "qrcodescanner-338417",
@@ -17,50 +17,57 @@ class googleSheetsAPI
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/qrcodescan%40qrcodescanner-338417.iam.gserviceaccount.com"
 }''';
 
-  static final _googleSheetID="1sHF_3KWYFCSgioYowDmqaFDMidjt0Y24g1yBFYy97Tc"; 
-  static final _gSheets=GSheets(_credentials);
+  static final _googleSheetID = "1sHF_3KWYFCSgioYowDmqaFDMidjt0Y24g1yBFYy97Tc";
+  static final _gSheets = GSheets(_credentials);
   static late Worksheet _feedBackSheet;
+  static late Worksheet _qrSheet;
+  static late Worksheet _trafficSheet;
 
-  static Future init() async
-  {
+  static Future init() async {
     try {
-      
-      final googleSheet= await _gSheets.spreadsheet(_googleSheetID);
-      _feedBackSheet=await _getWorkSheet(googleSheet,title:"JaiswalOldFeedback");
-      
+      final googleSheet = await _gSheets.spreadsheet(_googleSheetID);
+      _feedBackSheet =
+          await _getWorkSheet(googleSheet, title: "JaiswalOldFeedback");
+      _qrSheet = await _getWorkSheet(googleSheet, title: "QRCode");
+
+      _trafficSheet = await _getWorkSheet(googleSheet, title: "TrafficInMess");
+
       // await _feedBackSheet!.clear();
-    
-      final first_row=feedbackFeilds.getfields();
-      
+
+      final first_row = feedbackFeilds.getfields();
+
       // _userSheet!.values.insertRow(1, first_row);
       // _trafficSheet!.values.insertRow(1, traffic_first_row);
-       _feedBackSheet.values.insertRow(1, first_row);
-    } catch(e) {
+      _feedBackSheet.values.insertRow(1, first_row);
+    } catch (e) {
       print(e);
     }
   }
-   static Future<Worksheet> _getWorkSheet(
-  
-    Spreadsheet spreadsheet,
-    {
-      required String title,
 
-    })async
-    
-    { 
-      try
-      {
-       return await spreadsheet.addWorksheet(title);
-      }
-      catch(e)
-     {
-       return  spreadsheet.worksheetByTitle(title)!;
-     }
+  static Future<Worksheet> _getWorkSheet(
+    Spreadsheet spreadsheet, {
+    required String title,
+  }) async {
+    try {
+      return await spreadsheet.addWorksheet(title);
+    } catch (e) {
+      return spreadsheet.worksheetByTitle(title)!;
     }
+  }
 
+  static Future insert(List<Map<String, dynamic>> rowList) async {
+    _feedBackSheet.values.map.appendRows(rowList);
+  }
 
-    static Future insert(List<Map<String,dynamic>> rowList) async
-    {
-      _feedBackSheet.values.map.appendRows(rowList);
-    }
+  static Future updateCell(String qr) {
+    return _qrSheet.values.insertValueByKeys(qr, columnKey: "QR", rowKey: "No");
+  }
+
+  static Future<String> getQRCode() {
+    return _qrSheet.values.value(column: 4, row: 4);
+  }
+
+  static Future<String> getCount() {
+    return _trafficSheet.values.value(column: 2, row: 2);
+  }
 }

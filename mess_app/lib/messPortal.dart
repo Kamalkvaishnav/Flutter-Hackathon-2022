@@ -29,7 +29,12 @@ class _MessPortalState extends State<MessPortal> {
       body: tabs[_currentIndex],
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        title: Text('MessPortal'),
+        title: Text('MessPortal',
+            style: GoogleFonts.lato(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 224, 224, 224),
+            )),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(

@@ -13,7 +13,7 @@ class _PaymentState extends State<Payment> {
   static const _paymentItems = [
     PaymentItem(
       label: 'Total',
-      amount: '60',
+      amount: '120',
       status: PaymentItemStatus.final_price,
     )
   ];

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:mess_app/models/feedformModel.dart';
+import 'package:mess_app/api/googleSheetsApi.dart';
 
 class FormMohini extends StatefulWidget {
   const FormMohini({Key? key}) : super(key: key);
@@ -17,8 +19,8 @@ class _FormMohiniState extends State<FormMohini> {
   String other = '';
 
   String messStaff = '';
-  late double foodrating;
-  late double hygiene;
+  late double foodrating = 0;
+  late double hygiene = 0;
 
   Widget _buildFavDish() {
     return TextFormField(
@@ -142,7 +144,14 @@ class _FormMohiniState extends State<FormMohini> {
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
         appBar: AppBar(
-          title: Text('Mess Feedback'),
+          title: Text(
+            'Mess Feedback',
+            style: GoogleFonts.lato(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: Color.fromARGB(255, 226, 226, 226),
+            ),
+          ),
           centerTitle: true,
           flexibleSpace: Container(
             decoration: BoxDecoration(
@@ -152,6 +161,7 @@ class _FormMohiniState extends State<FormMohini> {
         ),
         body: SingleChildScrollView(
           child: Form(
+              key: formKey,
               child: Container(
                   margin:
                       EdgeInsets.only(left: 30, right: 30, bottom: 30, top: 10),
@@ -248,7 +258,18 @@ class _FormMohiniState extends State<FormMohini> {
                         height: 50,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/feedback');
+
+                            formKey.currentState?.save();
+
+                            final feedback_row = {
+                              feedbackFeilds.favDish: favDish,
+                              feedbackFeilds.foodrating: foodrating,
+                              feedbackFeilds.hygeine: hygiene,
+                              feedbackFeilds.messStaff: messStaff,
+                              feedbackFeilds.other: other
+                            };
+                            googleSheetsAPI.insert([feedback_row]);
+                            Navigator.pushNamed(context, '/');
                           },
                           child: Text(
                             'Submit',

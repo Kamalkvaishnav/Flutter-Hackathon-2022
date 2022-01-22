@@ -1,11 +1,14 @@
 import 'dart:math';
+import 'package:mess_app/api/googleSheetsApi.dart';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mess_app/messPass.dart';
 
 var upperMessCap = 30;
 var lowerMessCap = 30;
 var newMessCap = 25;
-var curUpperMess = 21;
+var curUpperMess = -1;
 var curNewMess = 19;
 var curLowermess = 11;
 
@@ -16,7 +19,24 @@ class TrafficUI extends StatefulWidget {
   _TrafficUIState createState() => _TrafficUIState();
 }
 
+Future _count(BuildContext context) async {
+  try {
+    curUpperMess = int.parse(await googleSheetsAPI.getCount());
+    print(curUpperMess);
+  } catch (e) {
+    print(e);
+  }
+}
+
 class _TrafficUIState extends State<TrafficUI> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _count(context);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,8 +80,16 @@ class _TrafficUIState extends State<TrafficUI> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text("Mohini", style: TextStyle(fontSize: 25)),
-                        Text("(Lower)", style: TextStyle(fontSize: 20))
+                        Text("Mohini",
+                            style: GoogleFonts.lato(
+                                color: Color.fromARGB(255, 70, 70, 70),
+                                fontSize: 25,
+                                fontWeight: FontWeight.w700)),
+                        Text("(Lower)",
+                            style: GoogleFonts.lato(
+                                color: Color.fromARGB(255, 70, 70, 70),
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700))
                       ],
                     ),
                     SizedBox(
@@ -116,8 +144,16 @@ class _TrafficUIState extends State<TrafficUI> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text("Jaiswal", style: TextStyle(fontSize: 25)),
-                        Text("(New)", style: TextStyle(fontSize: 20))
+                        Text("Jaiswal",
+                            style: GoogleFonts.lato(
+                                color: Color.fromARGB(255, 70, 70, 70),
+                                fontSize: 25,
+                                fontWeight: FontWeight.w700)),
+                        Text("(New)",
+                            style: GoogleFonts.lato(
+                                color: Color.fromARGB(255, 70, 70, 70),
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700))
                       ],
                     ),
                     SizedBox(
@@ -172,8 +208,16 @@ class _TrafficUIState extends State<TrafficUI> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text("Jaiswal", style: TextStyle(fontSize: 25)),
-                        Text("(Upper)", style: TextStyle(fontSize: 20))
+                        Text("Jaiswal",
+                            style: GoogleFonts.lato(
+                                color: Color.fromARGB(255, 70, 70, 70),
+                                fontSize: 25,
+                                fontWeight: FontWeight.w700)),
+                        Text("(Upper)",
+                            style: GoogleFonts.lato(
+                                color: Color.fromARGB(255, 70, 70, 70),
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700))
                       ],
                     ),
                     SizedBox(
@@ -192,9 +236,11 @@ class _TrafficUIState extends State<TrafficUI> {
                       Positioned(
                           left: 20,
                           top: 30,
-                          child: Text(curUpperMess.toString() +
-                              '/' +
-                              upperMessCap.toString()))
+                          child: (curUpperMess < 0)
+                              ? Text('Wait')
+                              : Text(curUpperMess.toString() +
+                                  '/' +
+                                  upperMessCap.toString()))
                     ])
                   ],
                 ),

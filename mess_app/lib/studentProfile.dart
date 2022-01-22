@@ -21,12 +21,11 @@ class _StudentProfileState extends State<StudentProfile> {
     Gsheet sheet = Gsheet('1dFR1hus3VY2zryi8b2QD2FmY9dpqQdupwmLChyXRSdk');
     sheet.readData("StudentDetails").then((value) {
       profile.add(ProfileModel(
-        profile_id: value[1][0],
-        profile_name: value[1][1],
-        profile_email: value[1][2],
-        profile_rollNo: value[1][3],
-        // profile_url: value[1][4]
-      ));
+          profile_id: value[1][0],
+          profile_name: value[1][1],
+          profile_email: value[1][2],
+          profile_rollNo: value[1][3],
+          profile_url: value[1][5]));
       print(value);
       setState(() {
         isLoading = true;
@@ -53,9 +52,20 @@ class _StudentProfileState extends State<StudentProfile> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Hey! ', style: TextStyle(fontSize: 30)),
-                  Text(profile[1].profile_name,
-                      style: TextStyle(color: Colors.blue, fontSize: 30))
+                  Text('Student ',
+                      style: GoogleFonts.lato(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.lightBlueAccent,
+                      )),
+                  Text(
+                    'Profile',
+                    style: GoogleFonts.lato(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 70, 70, 70),
+                    ),
+                  )
                 ],
               ),
               SizedBox(
@@ -63,7 +73,7 @@ class _StudentProfileState extends State<StudentProfile> {
               ),
               Container(
                   width: 300,
-                  height: 70,
+                  height: 65,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
                       color: Colors.grey[200]),
@@ -76,7 +86,10 @@ class _StudentProfileState extends State<StudentProfile> {
                           padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
                           child: Text(
                             'Name',
-                            style: TextStyle(color: Colors.grey[600]),
+                            style: GoogleFonts.lato(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey[600],
+                            ),
                           ),
                         ),
                       ),
@@ -84,7 +97,11 @@ class _StudentProfileState extends State<StudentProfile> {
                         padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
                         child: Text(
                           profile[1].profile_name,
-                          style: TextStyle(fontSize: 20),
+                          style: GoogleFonts.lato(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 70, 70, 70),
+                          ),
                         ),
                       ),
                     ],
@@ -105,7 +122,10 @@ class _StudentProfileState extends State<StudentProfile> {
                           padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
                           child: Text(
                             'Email',
-                            style: TextStyle(color: Colors.grey[600]),
+                            style: GoogleFonts.lato(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey[600],
+                            ),
                           ),
                         ),
                       ),
@@ -113,7 +133,11 @@ class _StudentProfileState extends State<StudentProfile> {
                         padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
                         child: Text(
                           profile[1].profile_email,
-                          style: TextStyle(fontSize: 20),
+                          style: GoogleFonts.lato(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 70, 70, 70),
+                          ),
                         ),
                       )
                     ],
@@ -134,7 +158,10 @@ class _StudentProfileState extends State<StudentProfile> {
                           padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
                           child: Text(
                             'Mobile No.',
-                            style: TextStyle(color: Colors.grey[600]),
+                            style: GoogleFonts.lato(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey[600],
+                            ),
                           ),
                         ),
                       ),
@@ -142,7 +169,11 @@ class _StudentProfileState extends State<StudentProfile> {
                         padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
                         child: Text(
                           '8824021960',
-                          style: TextStyle(fontSize: 20),
+                          style: GoogleFonts.lato(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 70, 70, 70),
+                          ),
                         ),
                       )
                     ],
@@ -163,7 +194,10 @@ class _StudentProfileState extends State<StudentProfile> {
                           padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
                           child: Text(
                             'Roll No.',
-                            style: TextStyle(color: Colors.grey[600]),
+                            style: GoogleFonts.lato(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey[600],
+                            ),
                           ),
                         ),
                       ),
@@ -171,7 +205,11 @@ class _StudentProfileState extends State<StudentProfile> {
                         padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
                         child: Text(
                           profile[1].profile_rollNo,
-                          style: TextStyle(fontSize: 20),
+                          style: GoogleFonts.lato(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 70, 70, 70),
+                          ),
                         ),
                       )
                     ],

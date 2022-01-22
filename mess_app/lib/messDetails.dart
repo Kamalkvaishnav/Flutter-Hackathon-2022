@@ -39,20 +39,28 @@ class _MessDetailsState extends State<MessDetails> {
             body: SingleChildScrollView(
             child: Center(
                 child: Column(children: <Widget>[
-              SizedBox(height: 20),
-              // CircleAvatar(
-              //   radius: 60,
-              //   backgroundImage: NetworkImage(messProfile[1].user_name),
-              // ),
               SizedBox(
-                height: 20,
+                height: 70,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Hey! ', style: TextStyle(fontSize: 30)),
-                  Text(messProfile[1].user_name,
-                      style: TextStyle(color: Colors.blue, fontSize: 30))
+                  Text(
+                    'Mess ',
+                    style: GoogleFonts.lato(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.lightBlueAccent,
+                    ),
+                  ),
+                  Text(
+                    'Details',
+                    style: GoogleFonts.lato(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 70, 70, 70),
+                    ),
+                  ),
                 ],
               ),
               SizedBox(
@@ -73,7 +81,10 @@ class _MessDetailsState extends State<MessDetails> {
                           padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
                           child: Text(
                             'Mess Name',
-                            style: TextStyle(color: Colors.grey[600]),
+                            style: GoogleFonts.lato(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey[600],
+                            ),
                           ),
                         ),
                       ),
@@ -81,7 +92,11 @@ class _MessDetailsState extends State<MessDetails> {
                         padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
                         child: Text(
                           messProfile[1].mess_name,
-                          style: TextStyle(fontSize: 20),
+                          style: GoogleFonts.lato(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 70, 70, 70),
+                          ),
                         ),
                       ),
                     ],
@@ -102,7 +117,10 @@ class _MessDetailsState extends State<MessDetails> {
                           padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
                           child: Text(
                             'Acadmic Semester',
-                            style: TextStyle(color: Colors.grey[600]),
+                            style: GoogleFonts.lato(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey[600],
+                            ),
                           ),
                         ),
                       ),
@@ -110,7 +128,11 @@ class _MessDetailsState extends State<MessDetails> {
                         padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
                         child: Text(
                           'B.Tech Sem-2',
-                          style: TextStyle(fontSize: 20),
+                          style: GoogleFonts.lato(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 70, 70, 70),
+                          ),
                         ),
                       )
                     ],
@@ -130,8 +152,11 @@ class _MessDetailsState extends State<MessDetails> {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
                           child: Text(
-                            'Mess Duration From',
-                            style: TextStyle(color: Colors.grey[600]),
+                            'Duration Starts',
+                            style: GoogleFonts.lato(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey[600],
+                            ),
                           ),
                         ),
                       ),
@@ -139,7 +164,11 @@ class _MessDetailsState extends State<MessDetails> {
                         padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
                         child: Text(
                           messProfile[1].mess_start,
-                          style: TextStyle(fontSize: 20),
+                          style: GoogleFonts.lato(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 70, 70, 70),
+                          ),
                         ),
                       )
                     ],
@@ -159,8 +188,11 @@ class _MessDetailsState extends State<MessDetails> {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
                           child: Text(
-                            'To',
-                            style: TextStyle(color: Colors.grey[600]),
+                            'Duration Ends',
+                            style: GoogleFonts.lato(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey[600],
+                            ),
                           ),
                         ),
                       ),
@@ -168,7 +200,11 @@ class _MessDetailsState extends State<MessDetails> {
                         padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
                         child: Text(
                           messProfile[1].mess_end,
-                          style: TextStyle(fontSize: 20),
+                          style: GoogleFonts.lato(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 70, 70, 70),
+                          ),
                         ),
                       )
                     ],
@@ -177,7 +213,3 @@ class _MessDetailsState extends State<MessDetails> {
           ));
   }
 }
-
-
-
-

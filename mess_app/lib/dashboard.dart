@@ -27,7 +27,8 @@ class _DashboardState extends State<Dashboard> {
         profile_name: value[1][1],
         profile_email: value[1][2],
         profile_rollNo: value[1][3],
-        profile_url: value[1][4],
+        profile_url: value[1][5],
+        
       ));
       print(value);
       setState(() {

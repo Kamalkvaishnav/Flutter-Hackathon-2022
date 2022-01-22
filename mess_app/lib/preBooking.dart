@@ -90,7 +90,7 @@ class _PreBookingState extends State<PreBooking> {
           Container(
             height: MediaQuery.of(context).size.height * 0.45,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(0.0),
               image: DecorationImage(
                 image: AssetImage("assets/biryani.jpg"),
                 fit: BoxFit.cover,
@@ -105,13 +105,16 @@ class _PreBookingState extends State<PreBooking> {
               Container(
                 height: MediaQuery.of(context).size.height * 0.5,
                 width: MediaQuery.of(context).size.width,
+
                 //color: Colors.white,
                 decoration: BoxDecoration(
+                  border: Border.all(color: Colors.blue, width: 3),
+
                   color: Colors.white,
                   shape: BoxShape.rectangle,
                   borderRadius: new BorderRadius.only(
-                    topLeft: const Radius.circular(70.0),
-                    topRight: const Radius.circular(70.0),
+                    topLeft: const Radius.circular(50.0),
+                    topRight: const Radius.circular(50.0),
                   ),
                   // boxShadow: [
                   //   BoxShadow(
@@ -125,66 +128,71 @@ class _PreBookingState extends State<PreBooking> {
                 child: Column(
                   children: [
                     SizedBox(height: 25),
-                    Row(
-                      // mainAxisAlignment: MainAxisAlignment.,
-                      children: [
-                        Text(
-                          "    Chicken Biryani",
-                          style: GoogleFonts.lato(
-                            fontSize: 35,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.center,
+                    //   children: [
+                    //     Text(
+                    //       "Non-veg Menu",
+                    //       style: GoogleFonts.lato(
+                    //         fontSize: 28,
+                    //         fontWeight: FontWeight.bold,
+                    //         color: Colors.lightBlue,
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 40, right: 35),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Chicken Biryani",
+                            style: GoogleFonts.lato(
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 70, 70, 70),
+                            ),
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text(
+                            "@120   ",
+                            style: GoogleFonts.lato(
+                              fontSize: 23,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 70, 70, 70),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: 10,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
+                      children: [],
+                    ),
+                    SizedBox(height: 50),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text(
-                          "Rs. 120   ",
+                          "Payment Method",
                           style: GoogleFonts.lato(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "  Confirm your chicken meal ! ",
-                          style: GoogleFonts.lato(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color: Colors.lightBlue,
                           ),
                         ),
                       ],
                     ),
                     SizedBox(height: 20),
-                    Row(
-                      // mainAxisAlignment: MainAxisAlignment,
-                      children: [
-                        Text(
-                          "       Payment Method",
-                          style: GoogleFonts.lato(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 40),
                     Container(
                       height: 50,
                       width: MediaQuery.of(context).size.width * 0.7,
@@ -192,36 +200,27 @@ class _PreBookingState extends State<PreBooking> {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             side: BorderSide(
-                              width: 2.0,
+                              width: 1.0,
                               color: Colors.blue,
                             ),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30)),
                             primary: Colors.white),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              '',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            // ImageIcon(
-                            //   AssetImage("Images/upi.png"),
-                            //   size : 20,
-                            // )
-                            Image.asset("assets/upi.png"),
-                          ],
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Image.asset("assets/newUPI.png"),
+                            ],
+                          ),
                         ),
                         onPressed: () {
                           Navigator.pushNamed(context, '/upi');
                         },
                       ),
                     ),
-                    SizedBox(height: 40),
+                    SizedBox(height: 20),
                     Container(
                       height: 50,
                       width: MediaQuery.of(context).size.width * 0.7,
@@ -229,7 +228,7 @@ class _PreBookingState extends State<PreBooking> {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                             side: BorderSide(
-                              width: 2.0,
+                              width: 1.0,
                               color: Colors.blue,
                             ),
                             shape: RoundedRectangleBorder(
@@ -238,18 +237,6 @@ class _PreBookingState extends State<PreBooking> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text(
-                              '',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.blue,
-                              ),
-                            ),
-                            // ImageIcon(
-                            //   AssetImage("Images/upi.png"),
-                            //   size : 20,
-                            // )
                             Image.asset(
                               "assets/razor.png",
                             ),

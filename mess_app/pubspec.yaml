@@ -48,6 +48,8 @@ dependencies:
   animated_splash_screen: ^1.1.0
   upi_india: ^3.0.1
   upi_pay: ^1.0.1
+  qr_flutter: ^4.0.0
+  barcode_scan2: ^4.2.0
 
 dev_dependencies:
   flutter_test:

@@ -60,7 +60,7 @@ class _UpiPaymentState extends State<UpiPayment> {
     else
       return Container(
         height: 900,
-        color: Color.fromARGB(255, 113, 183, 240),
+        color: Color.fromARGB(255, 226, 241, 253),
         child: Align(
           alignment: Alignment.center,
           child: SingleChildScrollView(
@@ -73,7 +73,7 @@ class _UpiPaymentState extends State<UpiPayment> {
                       style: GoogleFonts.lato(
                         fontSize: 30,
                         fontWeight: FontWeight.w500,
-                        color: Color.fromARGB(255, 2, 2, 2),
+                        color: Colors.blue,
                       )),
                 ),
                 SizedBox(height: 20),
