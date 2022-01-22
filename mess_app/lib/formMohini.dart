@@ -22,7 +22,26 @@ class _FormMohiniState extends State<FormMohini> {
 
   Widget _buildFavDish() {
     return TextFormField(
-      style: TextStyle(color: Colors.white, fontSize: 20),
+      decoration: InputDecoration(
+        border: InputBorder.none,
+        hintText: 'Favourite Food',
+        filled: true,
+        fillColor: Color.fromARGB(255, 238, 238, 238),
+        contentPadding:
+            const EdgeInsets.only(left: 14.0, bottom: 6.0, top: 8.0),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Color.fromARGB(255, 40, 158, 255)),
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey),
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+      ),
+      style: TextStyle(
+          color: Color.fromARGB(255, 0, 0, 0),
+          fontSize: 18,
+          fontWeight: FontWeight.w400),
       validator: ((value) {
         if (value!.isEmpty) {
           return 'Please enter text';
@@ -38,8 +57,8 @@ class _FormMohiniState extends State<FormMohini> {
         starCount: 5,
         isReadOnly: false,
         size: 40,
-        color: Colors.yellowAccent,
-        borderColor: Colors.grey,
+        color: Color.fromARGB(255, 40, 158, 255),
+        borderColor: Color.fromARGB(255, 93, 94, 94),
         onRated: (value) => setState(() => foodrating = value as double));
   }
 
@@ -48,15 +67,34 @@ class _FormMohiniState extends State<FormMohini> {
       starCount: 5,
       isReadOnly: false,
       size: 40,
-      color: Colors.yellowAccent,
-      borderColor: Colors.grey,
+      color: Color.fromARGB(255, 40, 158, 255),
+      borderColor: Color.fromARGB(255, 94, 93, 93),
       onRated: (value) => setState(() => hygiene = value as double),
     );
   }
 
   Widget _buildMessStaff() {
     return TextFormField(
-      style: TextStyle(color: Colors.white, fontSize: 20),
+      decoration: InputDecoration(
+        border: InputBorder.none,
+        hintText: 'Mess Staff',
+        filled: true,
+        fillColor: Color.fromARGB(255, 238, 238, 238),
+        contentPadding:
+            const EdgeInsets.only(left: 14.0, bottom: 6.0, top: 8.0),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Color.fromARGB(255, 40, 158, 255)),
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey),
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+      ),
+      style: TextStyle(
+          color: Color.fromARGB(255, 0, 0, 0),
+          fontSize: 18,
+          fontWeight: FontWeight.w400),
       validator: ((value) {
         if (value!.isEmpty) {
           return 'Please enter text';
@@ -69,7 +107,26 @@ class _FormMohiniState extends State<FormMohini> {
 
   Widget _buildOther() {
     return TextFormField(
-      style: TextStyle(color: Colors.white, fontSize: 20),
+      decoration: InputDecoration(
+        border: InputBorder.none,
+        hintText: 'Other',
+        filled: true,
+        fillColor: Color.fromARGB(255, 238, 238, 238),
+        contentPadding:
+            const EdgeInsets.only(left: 14.0, bottom: 6.0, top: 8.0),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Color.fromARGB(255, 40, 158, 255)),
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Color.fromARGB(255, 161, 161, 161)),
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+      ),
+      style: TextStyle(
+          color: Color.fromARGB(255, 0, 0, 0),
+          fontSize: 18,
+          fontWeight: FontWeight.w400),
       validator: ((value) {
         if (value == null || value.isEmpty) {
           return 'Please enter text';
@@ -83,103 +140,135 @@ class _FormMohiniState extends State<FormMohini> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
         appBar: AppBar(
-          title: Text(
-            'Mohini mess',
-            style: GoogleFonts.lato(
-              fontSize: 20.0,
-              fontWeight: FontWeight.w500,
-              color: Colors.grey[400],
-            ),
+          title: Text('Mess Feedback'),
+          centerTitle: true,
+          flexibleSpace: Container(
+            decoration: BoxDecoration(
+                image: DecorationImage(
+                    fit: BoxFit.cover, image: AssetImage('assets/Appbar.png'))),
           ),
-          backgroundColor: Colors.grey[800],
         ),
-        body: Form(
-            child: Container(
-                margin: EdgeInsets.all(24),
-                child: Column(
-                  children: [
-                    Text(
-                      'What is your current favourite dish in the mess?',
-                      style: GoogleFonts.lato(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
+        body: SingleChildScrollView(
+          child: Form(
+              child: Container(
+                  margin:
+                      EdgeInsets.only(left: 30, right: 30, bottom: 30, top: 10),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Feedback',
+                        style: GoogleFonts.lato(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w700,
+                          color: Color.fromARGB(255, 40, 158, 255),
+                        ),
                       ),
-                    ),
-                    _buildFavDish(),
-                    const SizedBox(
-                      height: 15.0,
-                    ),
-                    Text(
-                      'How is the food in your mess?',
-                      style: GoogleFonts.lato(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
+                      SizedBox(
+                        height: 15,
                       ),
-                    ),
-                    _buildFoodRating(),
-                    const SizedBox(
-                      height: 15.0,
-                    ),
-                    Text(
-                      'How hygenic is your ness?',
-                      style: GoogleFonts.lato(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                      ),
-                    ),
-                    _buildHygiene(),
-                    const SizedBox(
-                      height: 15.0,
-                    ),
-                    Text(
-                      'How is the behaviour of the mess staff?',
-                      style: GoogleFonts.lato(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                      ),
-                    ),
-                    _buildMessStaff(),
-                    const SizedBox(
-                      height: 15.0,
-                    ),
-                    Text(
-                      'Any other suggestions',
-                      style: GoogleFonts.lato(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.white,
-                      ),
-                    ),
-                    _buildOther(),
-                    const SizedBox(
-                      height: 15.0,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/feedback');
-                      },
-                      child: Text(
-                        'Submit',
+                      Text(
+                        'How hygenic is your mess?',
                         style: GoogleFonts.lato(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
-                          color: Colors.white,
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            const Color.fromARGB(255, 53, 51, 51)),
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0))),
+                      SizedBox(
+                        height: 10,
                       ),
-                    ),
-                  ],
-                ))));
+                      _buildHygiene(),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'How is the food in your mess?',
+                        style: GoogleFonts.lato(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      _buildFoodRating(),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'What is your current favourite dish in the mess?',
+                        style: GoogleFonts.lato(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      _buildFavDish(),
+                      const SizedBox(
+                        height: 15.0,
+                      ),
+                      Text(
+                        'How is the behaviour of the mess staff?',
+                        style: GoogleFonts.lato(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      _buildMessStaff(),
+                      const SizedBox(
+                        height: 15.0,
+                      ),
+                      Text(
+                        'Any other suggestions',
+                        style: GoogleFonts.lato(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      _buildOther(),
+                      const SizedBox(
+                        height: 15.0,
+                      ),
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.7,
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/feedback');
+                          },
+                          child: Text(
+                            'Submit',
+                            style: GoogleFonts.lato(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white,
+                            ),
+                          ),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                const Color.fromARGB(255, 40, 158, 255)),
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(25.0))),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ))),
+        ));
   }
 }

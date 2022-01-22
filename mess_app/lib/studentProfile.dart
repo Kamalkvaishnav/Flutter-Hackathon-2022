@@ -38,150 +38,145 @@ class _StudentProfileState extends State<StudentProfile> {
   Widget build(BuildContext context) {
     return (!isLoading)
         ? const Loading()
-        : Container(
-            child: Column(
-              children: [
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 30.0),
-                          child: Text(
-                            'Hey, ' + profile[1].profile_name,
-                            style: GoogleFonts.lato(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.w700),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 60,
-                ),
-                Container(
-                  width: 350,
-                  height: 60,
+        : Scaffold(
+            body: SingleChildScrollView(
+            child: Center(
+                child: Column(children: <Widget>[
+              SizedBox(height: 20),
+              CircleAvatar(
+                radius: 60,
+                backgroundImage: NetworkImage(profile[1].profile_url),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('Hey! ', style: TextStyle(fontSize: 30)),
+                  Text(profile[1].profile_name,
+                      style: TextStyle(color: Colors.blue, fontSize: 30))
+                ],
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Container(
+                  width: 300,
+                  height: 70,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      color: Colors.grey[600]),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                      color: Colors.grey[200]),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         child: Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
                           child: Text(
-                            profile[1].profile_name,
-                            style: GoogleFonts.lato(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.w700),
+                            'Name',
+                            style: TextStyle(color: Colors.grey[600]),
                           ),
                         ),
                       ),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                        child: Text(
+                          profile[1].profile_name,
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
                     ],
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  width: 350,
-                  height: 60,
+                  )),
+              SizedBox(height: 20),
+              Container(
+                  width: 300,
+                  height: 70,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      color: Colors.grey[600]),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                      color: Colors.grey[200]),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         child: Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
                           child: Text(
-                            'Male',
-                            style: GoogleFonts.lato(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.w700),
+                            'Email',
+                            style: TextStyle(color: Colors.grey[600]),
                           ),
                         ),
                       ),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                        child: Text(
+                          profile[1].profile_email,
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      )
                     ],
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  width: 350,
-                  height: 60,
+                  )),
+              SizedBox(height: 20),
+              Container(
+                  width: 300,
+                  height: 70,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      color: Colors.grey[600]),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                      color: Colors.grey[200]),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         child: Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
                           child: Text(
-                            profile[1].profile_rollNo,
-                            style: GoogleFonts.lato(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.w700),
+                            'Mobile No.',
+                            style: TextStyle(color: Colors.grey[600]),
                           ),
                         ),
                       ),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                        child: Text(
+                          '8824021960',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      )
                     ],
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  width: 350,
-                  height: 60,
+                  )),
+              SizedBox(height: 20),
+              Container(
+                  width: 300,
+                  height: 70,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30),
-                      color: Colors.grey[600]),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                      color: Colors.grey[200]),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         child: Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.fromLTRB(30, 10, 0, 0),
                           child: Text(
-                            profile[1].profile_email,
-                            style: GoogleFonts.lato(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.w700),
+                            'Roll No.',
+                            style: TextStyle(color: Colors.grey[600]),
                           ),
                         ),
                       ),
+                      Container(
+                        padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                        child: Text(
+                          profile[1].profile_rollNo,
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      )
                     ],
-                  ),
-                )
-              ],
-            ),
-          );
+                  )),
+            ])),
+          ));
   }
 }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   // TODO: implement build
-  //   return Container();
-  // }
-

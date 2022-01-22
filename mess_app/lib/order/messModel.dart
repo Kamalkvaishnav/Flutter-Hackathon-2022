@@ -1,15 +1,18 @@
 class MessModel {
   final String mess_id;
   final String mess_name;
+  final String user_name;
+  final String user_phoneNo;
   final String mess_start;
   final String mess_end;
   String pass_id;
 
-  MessModel({
-    this.mess_name = "Jaiswal",
-    this.mess_id = "1",
-    this.mess_start = "02-12-2021",
-    this.mess_end = "03-2-2022",
-    this.pass_id = "ob_24924234",
-  });
+  MessModel(
+      {this.mess_name = "Jaiswal",
+      this.mess_id = "1",
+      this.mess_start = "02-12-2021",
+      this.mess_end = "03-2-2022",
+      this.pass_id = "ob_24924234",
+      this.user_name = 'Kamal',
+      this.user_phoneNo = '8824021960'});
 }

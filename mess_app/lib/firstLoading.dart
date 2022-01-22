@@ -12,16 +12,7 @@ class _FirstLoadingState extends State<FirstLoading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//        floatingActionButton: FloatingActionButton(
-//         onPressed: () {
-//   Navigator.push(
-//     context,
-//     MaterialPageRoute(builder: (context) {
-//       return Profile();
-//     }),
-//   );
-// }
-//         ),
+//
 
       body: Center(
         child: Container(

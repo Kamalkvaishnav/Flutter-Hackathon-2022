@@ -122,85 +122,87 @@ class _MessPassState extends State<MessPass> {
   Widget build(BuildContext context) {
     return !isLoading
         ? Loading()
-        : Container(
-            child: Column(
-              children: [
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 30.0),
-                          child: Text(
-                            'Mess QR Code',
-                            style: GoogleFonts.lato(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.w700),
+        : SingleChildScrollView(
+            child: Container(
+              child: Column(
+                children: [
+                  Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 30.0),
+                            child: Text(
+                              'Mess QR Code',
+                              style: GoogleFonts.lato(
+                                  color: Colors.white,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w700),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Container(
-                    height: 300,
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                      height: 300,
+                      width: 350,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: Colors.grey[400]),
+                      child: (pickedImage != null)
+                          ? Image.file(pickedImage!)
+                          : Center(child: Text('No File'))),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Container(
                     width: 350,
+                    height: 60,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        color: Colors.grey[400]),
-                    child: (pickedImage != null)
-                        ? Image.file(pickedImage!)
-                        : Center(child: Text('No File'))),
-                SizedBox(
-                  height: 30,
-                ),
-                Container(
-                  width: 350,
-                  height: 60,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: Colors.grey[600]),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            'Pass_ID: ' + pass[1].pass_id,
-                            style: GoogleFonts.lato(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.w700),
+                        color: Colors.grey[600]),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(
+                              'Pass_ID: ' + pass[1].pass_id,
+                              style: GoogleFonts.lato(
+                                  color: Colors.white,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w700),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                ElevatedButton(
-                  onPressed: imagePickerOption,
-                  child: Container(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text(
-                        "Upload",
-                        style: GoogleFonts.lato(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontWeight: FontWeight.w700),
+                  ElevatedButton(
+                    onPressed: imagePickerOption,
+                    child: Container(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(
+                          "Upload",
+                          style: GoogleFonts.lato(
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.w700),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
   }
