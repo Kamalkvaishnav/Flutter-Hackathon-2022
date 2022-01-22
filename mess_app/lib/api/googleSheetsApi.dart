@@ -71,7 +71,7 @@ class googleSheetsAPI {
   }
 
   static Future<String> getQRCode() {
-    return _qrSheet.values.value(column: 4, row: 4);
+    return _qrSheet.values.value(column: 2, row: 2);
   }
 
   static Future addToSheets(List<Map<String, dynamic>> rowList) async {
