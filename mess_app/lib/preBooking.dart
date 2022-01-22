@@ -1,8 +1,14 @@
+import 'dart:convert';
+import 'package:mess_app/models/bookingModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mess_app/utilities/gsheets.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:toast/toast.dart';
+import 'package:http/http.dart' as http;
+import 'package:mess_app/studentProfile.dart';
+import 'api/googleSheetsApi.dart';
 
 class PreBooking extends StatefulWidget {
   const PreBooking({Key? key}) : super(key: key);
@@ -50,7 +56,19 @@ class _PreBookingState extends State<PreBooking> {
 
   void handlerPaymentSuccess(PaymentSuccessResponse) {
     print('Payment Success');
-
+    sendEmail(
+        name: 'Sandeep Desai',
+        email: 'desai.sandeep@iitgn.ac.in',
+        subject: 'Mess Order Confirmed!!',
+        messaage: 'We recieved your order successfully!!');
+    final booking_row = {
+      bookFeilds.Name: "Kamal",
+      bookFeilds.emailid: "kamal@iitgn.ac.in",
+      bookFeilds.time: DateTime.now().hour.toString() +
+          ":" +
+          DateTime.now().minute.toString()
+    };
+    googleSheetsAPI.addToSheets([booking_row]);
     Toast.show('Payment Success', context, duration: Toast.LENGTH_LONG);
     Navigator.pushNamed(context, '/prebooking');
   }
@@ -67,24 +85,40 @@ class _PreBookingState extends State<PreBooking> {
     Navigator.pushNamed(context, '/prebooking');
   }
 
+  //Email
+  Future sendEmail({
+    required String name,
+    required String email,
+    required String subject,
+    required String messaage,
+  }) async {
+    final serviceId = 'service_tzgouv6';
+    final templateId = 'template_trfpnk8';
+    final userId = 'user_ctINjWbncDnk1HXWOcnbJ';
+    final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
+
+    final response = await http.post(url,
+        headers: {
+          'origin': 'http://localhost',
+          'Content-Type': 'application/json'
+        },
+        body: json.encode({
+          'service_id': serviceId,
+          'template_id': templateId,
+          'user_id': userId,
+          'template_params': {
+            'user_name': name,
+            'user_email': email,
+            'user_subject': subject,
+            'user_message': messaage
+          }
+        }));
+    print(response.body);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-
-      //   title: const Text('   Mess Portal'),
-      //   actions: <Widget>[
-      //     IconButton(
-      //       icon: const Icon(Icons.add_alert),
-      //       tooltip: 'Show Snackbar',
-      //       onPressed: () {
-      //         ScaffoldMessenger.of(context).showSnackBar(
-      //             const SnackBar(content: Text('This is a snackbar')));
-      //       },
-      //     ),
-      //   ],
-      // ),
-
       body: Stack(
         children: [
           Container(
@@ -109,38 +143,18 @@ class _PreBookingState extends State<PreBooking> {
                 //color: Colors.white,
                 decoration: BoxDecoration(
                   border: Border.all(color: Colors.blue, width: 3),
-
                   color: Colors.white,
                   shape: BoxShape.rectangle,
                   borderRadius: new BorderRadius.only(
                     topLeft: const Radius.circular(50.0),
                     topRight: const Radius.circular(50.0),
                   ),
-                  // boxShadow: [
-                  //   BoxShadow(
-                  //     color : Colors.blue,
-                  //     blurRadius: 6,
-                  //     spreadRadius: 3,
-                  //   ),
-                  // ],
                 ),
 
                 child: Column(
                   children: [
                     SizedBox(height: 25),
-                    // Row(
-                    //   mainAxisAlignment: MainAxisAlignment.center,
-                    //   children: [
-                    //     Text(
-                    //       "Non-veg Menu",
-                    //       style: GoogleFonts.lato(
-                    //         fontSize: 28,
-                    //         fontWeight: FontWeight.bold,
-                    //         color: Colors.lightBlue,
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
+                    //
                     SizedBox(
                       height: 10,
                     ),
@@ -217,6 +231,20 @@ class _PreBookingState extends State<PreBooking> {
                         ),
                         onPressed: () {
                           Navigator.pushNamed(context, '/upi');
+                          sendEmail(
+                              name: 'Sandeep Desai',
+                              email: 'desai.sandeep@iitgn.ac.in',
+                              subject: 'Mess Order Confirmed!!',
+                              messaage:
+                                  'We recieved your order successfully!!');
+                          final booking_row = {
+                            bookFeilds.Name: "Kamal",
+                            bookFeilds.emailid: "kamal@iitgn.ac.in",
+                            bookFeilds.time: DateTime.now().hour.toString() +
+                                ":" +
+                                DateTime.now().minute.toString()
+                          };
+                          googleSheetsAPI.addToSheets([booking_row]);
                         },
                       ),
                     ),

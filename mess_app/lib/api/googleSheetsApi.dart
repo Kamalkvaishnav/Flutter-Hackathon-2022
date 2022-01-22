@@ -1,6 +1,7 @@
 import 'package:gsheets/gsheets.dart';
 import 'package:mess_app/feedback.dart';
 import 'package:mess_app/models/feedformModel.dart';
+import 'package:mess_app/models/bookingModel.dart';
 
 class googleSheetsAPI {
   static const _credentials = r'''
@@ -22,6 +23,7 @@ class googleSheetsAPI {
   static late Worksheet _feedBackSheet;
   static late Worksheet _qrSheet;
   static late Worksheet _trafficSheet;
+  static late Worksheet _bookingSheet;
 
   static Future init() async {
     try {
@@ -32,9 +34,14 @@ class googleSheetsAPI {
 
       _trafficSheet = await _getWorkSheet(googleSheet, title: "TrafficInMess");
 
+      _bookingSheet = await _getWorkSheet(googleSheet, title: "Booking");
+
       // await _feedBackSheet!.clear();
 
       final first_row = feedbackFeilds.getfields();
+
+      final booking_row = bookFeilds.getfields();
+      _bookingSheet.values.insertRow(1, booking_row);
 
       // _userSheet!.values.insertRow(1, first_row);
       // _trafficSheet!.values.insertRow(1, traffic_first_row);
@@ -65,6 +72,10 @@ class googleSheetsAPI {
 
   static Future<String> getQRCode() {
     return _qrSheet.values.value(column: 4, row: 4);
+  }
+
+  static Future addToSheets(List<Map<String, dynamic>> rowList) async {
+    _bookingSheet.values.map.appendRows(rowList);
   }
 
   static Future<String> getCount() {
